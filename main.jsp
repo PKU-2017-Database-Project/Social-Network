@@ -7,7 +7,6 @@
 
 
 <%
-
 	response.setCharacterEncoding("UTF-8");
 	request.setCharacterEncoding("UTF-8");
 	String email=(String)session.getAttribute("email");
@@ -15,7 +14,6 @@
 	String basePath = request.getScheme() + "://"
 		+ request.getServerName() + ":" + request.getServerPort()
 		+ path + "/";
-
 	/** 链接数据库参数 **/
 	String driverName = "com.mysql.jdbc.Driver"; //驱动名称
 	String DBUser = "admin"; //mysql用户名
@@ -23,34 +21,23 @@
 	String DBName = "working"; //数据库名
 	String MySQLServer = "127.0.0.1"; //MySQL地址
 	String MySQLServerPort = "3306"; //MySQL端口号（默认为3306）
-
 	//数据库完整链接地址
 	String connUrl = "jdbc:mysql://"+MySQLServer+":"+MySQLServerPort+"/" + DBName + "?user="
 		+ DBUser + "&password=" + DBPasswd ;
-
 	//加载数据库驱动
 	Class.forName(driverName).newInstance();
-
 	//链接数据库并保存到 conn 变量中
 	java.sql.Connection conn = DriverManager.getConnection(connUrl);
-
 	//申明～？
 	java.sql.Statement stmt = conn.createStatement();
-
 	//设置字符集
 	stmt.executeQuery("SET NAMES UTF8");
-
-
 	//申明～？
 	java.sql.Statement stmt2 = conn.createStatement();
-
 	//设置字符集
 	stmt2.executeQuery("SET NAMES UTF8");
-
 	//要执行的 sql 查询
 	String sql;
-
-
 %>
 <html>
 <head>
@@ -69,7 +56,6 @@
   display: flex;
   position: relative;
 }
-
 .blur-container {
   background-size: cover;
   background-position: center;
@@ -102,9 +88,8 @@
   display: block;
   position: absolute;
 }
-
 .blur-container.blur-8 {
-  --bg: url(background3.jpeg);
+  --bg: url(background2.jpg);
   overflow: hidden;
   background-image: var(--bg);
 }
@@ -117,7 +102,6 @@
           filter: blur(6px);
   background-image: var(--bg);
 }
-
 .blur-container.blur-8 .blur-box {
   background-size: cover;
   background-position: center;
@@ -151,15 +135,12 @@
     -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
-
 a {
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
 }
-
-
 .blur-container.blur-5 {
-  --bg: url(background3.jpeg);
+  --bg: url(background2.jpg);
   background-image: var(--bg); 
   
 }
@@ -257,7 +238,6 @@ a {
 			border-width: 1px 0px 0px 0px;
 			border-color: "#202020";
 		}
-
 	</style>
 	<SCRIPT type="text/javascript">
 		function submitStatement(){
@@ -320,7 +300,6 @@ a {
 				if (xmlhttp!=null){
 					xmlhttp.onreadystatechange=function(){
 						if (xmlhttp.readyState==4 && xmlhttp.status==200){
-
 							window.location.reload();
 						}
 					}
@@ -336,7 +315,7 @@ a {
 		}
 	</SCRIPT>
 </head>
-<body>	
+<body style="background: url(background2.jpg)">	
 		<section class="blur-container blur-5 justify-content-center align-items-center" style="height:130px">
     <div class="blur-box">
     <div class="container-fluid d-flex justify-content-around align-items-center">
@@ -402,7 +381,7 @@ a {
 	<table bgcolor="">	
 	  <tr height="">
 	  	<td  width="500">
-	      <a style="display:block;width:160px ;color:#FFFFFF;background:url(background3.jpeg) no-repeat fixed ;
+	      <a style="display:block;width:160px ;color:#FFFFFF;background:url(background2.jpg) no-repeat fixed ;
 	    		text-align:center;text-decoration:none;padding:4px;font-weight:bold;"
 	    		 href="view.jsp?email=<%out.print(rs.getString("email"));%>"><%out.print(rs.getString("username"));%></a>
  	    </td>
@@ -436,12 +415,12 @@ a {
 	while (rs2.next()){
 	%>
 	
-	<td class="comment" width="500"><font size="3" color="black">		
+	<td class="comment" width="50"><font size="3" color="black">		
 		 <a href="view.jsp?email=<%out.print(rs2.getString("email"));%>"><%out.print(rs2.getString("username"));%></a>Replies:<a href="view.jsp?email=<%out.print(rs2.getString("email2"));%>"><%out.print(rs2.getString("username2"));%></a>
     </font><font size="4" color="black"><%out.print(rs2.getString("reply"));%></font>	
 		   
 	</td>
-	<td  class="comment" width="110"><font size="3" color="gray"><%out.print(rs2.getString("time"));%></font>
+	<td  class="comment" width="110"><font size="5" color="black"><%out.print(rs2.getString("time"));%></font>
 	</td>
 	<td  class="comment" width="60"><a href="javascript:reply('<%out.print(rs.getString("statusnum"));%>','<%out.print(rs2.getString("replynum"));%>')">Reply</a></td>
 	</tr>
@@ -469,7 +448,6 @@ a {
 </body>
 </html>
 <%
-
 		/** 关闭连接 **/
 		conn.close();
 		stmt.close();

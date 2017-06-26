@@ -29,23 +29,23 @@
 body{color:#000;background:#fff;font-size:12px;line-height:166%;text-align:center;}
 body{font-family:verdana}
 h1{font-size:100%}
-body,h1{margin:0;padding:0;border:0}
+body,h1{margin:0;padding:0;border:0;overflow:hidden}
 a{text-decoration:none;color:#959595}
 a:hover{color:#626262}
 .fontWeight{font-weight:700}
-.header{width:1000px;height:81px;position:relative;margin:0 auto;z-index:2;overflow:hidden;}
-.headerLogo{top:17px;left:50px;position:absolute}
-.headerIntro{height:28px;width:144px;display:block;background-position:0 -64px;top:17px;left:174px;position:absolute}
+.header{width:100%;height:12%;position:relative;margin:0 auto;z-index:2;overflow:hidden;background:url(background.jpg) no-repeat center top}
+.headerLogo{top:7%;left:4%;position:absolute}
+.headerIntro{height:5%;width:20%;display:block;background-position:0 -64px;top:35%;left:5%;position:absolute;font-size:30px}
 .headerNav{top:21px;right:100px;text-align:right;color:#cfd0d0;position:absolute}
 .headerNav a{padding-left:13px;display:inline-block;}
 .headerNav .last{padding-left: 0;}
 
-.main{height:600px;background:#fff;position:relative;min-width:1000px;}
-.main-inner{background:url(background.jpg) no-repeat center top}
-#mainCnt{width:100%;height:600px;position:relative;clear:both;background-repeat:no-repeat;background-position:center top;}
+.main{margin:0 auto;height:100%;position:relative;min-width:1000px;}
+.main-inner{margin:0 auto;background:url(background.jpg) no-repeat center top}
+#mainCnt{width:100%;height:88%;position:relative;clear:both;background-repeat:no-repeat;background-position:center top;}
 
-.style1{width:295px;padding:13px 14px 15px;top:56px;left:50%;margin-left:90px;text-align:center;
-	position:absolute;border:1px solid #b9cbd8; border-bottom:2px solid #c3cfd8; background:#fff;}
+.style1{width:20%;padding:15px 15px 15px;top:30px;left:40%;text-align:center;
+	position:absolute}
 	input{width:150;height:30;text-align:center}
 .input-row{margin:20px;margin-bottom:18px;height=40px;position:relative;font-size:20px;font-weight:300;text-align:center;}
 
@@ -59,21 +59,17 @@ a:hover{color:#626262}
 
 </head>
 
-<body width="300" height="300">
+<body width="300" height="300" class="main-inner">
 	<header class="header">
-	<h1 class="headerLogo"><img src="logo.jpg" alt="logo"/></h1>
-	<a class="headerIntro">website introduction</a>
+	<a class="headerIntro">Social Network</a>
 	<nav class="headerNav">
-		<a href>xxxx</a>
-		<a href>xxxx</a>
-		<a href>xxxx</a>
 		
 	</nav>		
 	</header>
 	<section class="main" >
 		<div id="mainCnt" class="main-inner"></div>
 		
-		<div align="center" class="style1 style2">Log in
+		<div align="center" class="style1 style2"><a style="font-color:white">Log in</a>
     
     <form action="loginResponse.jsp" method="post">
       <div class="input-row" align="center">
@@ -82,13 +78,12 @@ a:hover{color:#626262}
 	    <div class="input-row password-row" align="center">
 	    	<input type="password" name="passwd" placeholder="password" maxlength="20" style="width:150">
 	    </div>			
-	<!-- added part -->
-		<div class="g-recaptcha" data-sitekey="6LdDNiMUAAAAAHDPfsdqqPKAPFEy5Xi3EoGwJIXi"></div>
-	<!-- added part -->
 	  <div>
-		<input class="buttonrow" type="submit" value="Sign in" />
-		<input class="buttonrow" type="button" value="Sign up" onclick="location.href='register.jsp'"/>
+		<input type="submit" value="Sign in" />
+		<input type="button" value="Sign up" onclick="location.href='register.jsp'"/>
 	</div>
+
+		<div class="g-recaptcha" data-sitekey="6LdDNiMUAAAAAHDPfsdqqPKAPFEy5Xi3EoGwJIXi"></div>
 </form>
 			
 	</div>

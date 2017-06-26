@@ -95,11 +95,12 @@
 
 %>
 
-<body style="background:url(frog.gif) no-repeat fixed center">
+<body style="background:url(background2.jpg)">
+<div style="left:43%;top:30%;position:absolute">
 <%
 if (ok==1){
-	out.println("<p>You've successfully changed profile.</p>");
-	out.println("<p>Back to <a href=\"main.jsp\">Homepage</a> after 5 secs...</p>");
+	out.println("<p style='color:white'>You've successfully changed profile.</p>");
+	out.println("<p style='color:white'>Back to <a href=\"main.jsp\">Homepage</a> after 5 secs...</p>");
 	String content=5+";URL="+"main.jsp";
 	response.setHeader("REFRESH",content);
 }else{
@@ -109,4 +110,5 @@ if (ok==1){
 	response.setHeader("REFRESH",content);
 }
 %>
+%</div>
 </body>

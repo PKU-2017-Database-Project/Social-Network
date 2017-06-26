@@ -104,7 +104,7 @@
 }
 
 .blur-container.blur-8 {
-  --bg: url(background3.jpeg);
+  --bg: url(background2.jpg);
   overflow: hidden;
   background-image: var(--bg);
 }
@@ -159,7 +159,7 @@ a {
 
 
 .blur-container.blur-5 {
-  --bg: url(background3.jpeg);
+  --bg: url(background2.jpg);
   background-image: var(--bg); 
   
 }
@@ -309,7 +309,7 @@ a {
 	</SCRIPT>
 </head>
 
-<body >
+<body style="background:url(background2.jpg)">
 		<section class="blur-container blur-5 justify-content-center align-items-center" style="height:130px">
   <div class="blur-box">
     <div class="container-fluid d-flex justify-content-around align-items-center">
@@ -383,7 +383,7 @@ a {
 	<table bgcolor="">
 		<tr height="">
 	    <td  width="500">
-	    	<a style="display:block;width:160px ;color:#FFFFFF;background:url(background3.jpeg) no-repeat fixed ;
+	    	<a style="display:block;width:160px ;color:#FFFFFF;background:url(background2.jpg) no-repeat fixed ;
 	    		text-align:center;text-decoration:none;padding:4px;font-weight:bold;"
 	    		 href="view.jsp?email=<%out.print(targetEmail);%>"><%out.print(targetName);%></a>
 	    </td>
