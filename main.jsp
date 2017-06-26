@@ -355,8 +355,8 @@ a {
     	<div style="position:reletive;left:300" class="blur-box">
     	 <div align="center">
 		
-	 <TEXTAREA type="text" id="statement"  rows=2 cols=50 class="input_detail" placeholder="Current state"></TEXTAREA>
-	 <input style="height: 20; width:50" type="button" value="发布" onclick="submitStatement()"/>
+	 <TEXTAREA type="text" id="statement" class="input_detail" rows=2 cols=50 placeholder="Current state"></TEXTAREA>
+	 <input style="height: 20; width:50;" type="button" value="发布" onclick="submitStatement()"/>
 	     </div>
 	    </div>
     </section>    		  
@@ -383,15 +383,15 @@ a {
 	  	<td  width="500">
 	      <a style="display:block;width:160px ;color:#FFFFFF;background:url(background2.jpg) no-repeat fixed ;
 	    		text-align:center;text-decoration:none;padding:4px;font-weight:bold;"
-	    		 href="view.jsp?email=<%out.print(rs.getString("email"));%>"><%out.print(rs.getString("username"));%></a>
+	    		 href="view.jsp?email=<%out.print(rs.getString("email"));%>">User: <%out.print(rs.getString("username"));%></a>
  	    </td>
  	  </tr>
  	  <tr height="100">
-	    <td width="500"><font size="5" color="black"><%out.print(rs.getString("content"));%></font>
+	    <td width="500"><font size="5" color="white"><%out.print(rs.getString("content"));%></font>
 	    </td>
-   	  <td width="110"><font size="3" color="gray"><%out.print(rs.getString("time"));%></font>
+   	  <td width="150"><font size="3" color="white"><%out.print(rs.getString("time"));%></font>
 	    </td>
-	    <td width="60"><a style="text-decoration:none;font-weight:bold;" href="javascript:reply('<%out.print(rs.getString("statusnum"));%>', '0')">Reply</a><td>
+	    <td width="60"><a style="font-weight:500;text-decoration:none;font-weight:bold;" href="javascript:reply('<%out.print(rs.getString("statusnum"));%>', '0')">Reply</a><td>
 	  </tr>
 	   <tr height="10">
 	     <td  width="650">
@@ -415,12 +415,12 @@ a {
 	while (rs2.next()){
 	%>
 	
-	<td class="comment" width="50"><font size="3" color="black">		
-		 <a href="view.jsp?email=<%out.print(rs2.getString("email"));%>"><%out.print(rs2.getString("username"));%></a>Replies:<a href="view.jsp?email=<%out.print(rs2.getString("email2"));%>"><%out.print(rs2.getString("username2"));%></a>
-    </font><font size="4" color="black"><%out.print(rs2.getString("reply"));%></font>	
+	<td class="comment" width="50"><font size="3" color="white">		
+		 <a href="view.jsp?email=<%out.print(rs2.getString("email"));%>"><%out.print(rs2.getString("username"));%></a>&nbsp;replies&nbsp;<a href="view.jsp?email=<%out.print(rs2.getString("email2"));%>"><%out.print(rs2.getString("username2"));%></a>
+    </font><font size="5" color="white">:&nbsp;<%out.print(rs2.getString("reply"));%></font>	
 		   
 	</td>
-	<td  class="comment" width="110"><font size="5" color="black"><%out.print(rs2.getString("time"));%></font>
+	<td  class="comment" width="150"><font size="3" color="white"><%out.print(rs2.getString("time"));%></font>
 	</td>
 	<td  class="comment" width="60"><a href="javascript:reply('<%out.print(rs.getString("statusnum"));%>','<%out.print(rs2.getString("replynum"));%>')">Reply</a></td>
 	</tr>
