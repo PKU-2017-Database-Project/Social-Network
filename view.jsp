@@ -394,7 +394,7 @@ a {
 	</td>
 	<td width="150"><font size="3" color="white"><%out.print(rs.getString("time"));%></font>
 	</td>
-	<td width="60"><a style="color:white;text-decoration:none;font-weight:bold;" href="javascript:reply('<%out.print(rs.getString("statusnum"));%>', '0')">Reply</a></td>
+	<td width="60"><a style="text-decoration:none;font-weight:bold;" href="javascript:reply('<%out.print(rs.getString("statusnum"));%>', '0')">Reply</a></td>
 	</tr>
   <tr height="10">
 	  <td  width="650">
