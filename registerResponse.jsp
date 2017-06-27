@@ -67,7 +67,7 @@
 	}
 %>
 
-<body style="background:url(frog.gif) no-repeat fixed center">
+<body style="background:url(background2.jpg);background-attachment:fixed;background-size:cover; background-position: center;">
 <%
 if (ok==1){
 	out.println("<p>You've successfully signed up!</p>");
