@@ -44,7 +44,7 @@
 	<title>Social Network</title>
 	<meta http-equiv="content-Type" content="text/html;charset=UTF-8">
 	<style>
-		body 
+		body
   {
   	word-wrap:break-word; word-break:break-all;
   	text-decoration:none;
@@ -141,8 +141,8 @@ a {
 }
 .blur-container.blur-5 {
   --bg: url(background2.jpg);
-  background-image: var(--bg); 
-  
+  background-image: var(--bg);
+
 }
 .blur-container.blur-5::after {
   background-size: cover;
@@ -154,12 +154,12 @@ a {
   background-image: var(--bg);
 }
 .blur-container.blur-5 .blur-box {
-  
+
   width: 100%;
   height: 100px;
   overflow: hidden;
-  
-  
+
+
 }
 .blur-container.blur-5 .blur-box .btn {
   color: #fff;
@@ -315,13 +315,13 @@ a {
 		}
 	</SCRIPT>
 </head>
-<body style="background: url(background2.jpg);background-attachment:fixed;background-size:cover; background-position: center;">	
+<body style="background: url(background2.jpg);background-attachment:fixed;background-size:cover; background-position: center;">
 		<section class="blur-container blur-5 justify-content-center align-items-center" style="height:130px">
     <div class="blur-box">
     <div class="container-fluid d-flex justify-content-around align-items-center">
-    	
-    	   		
-      <a style="position:absolute; left:80px" href="main.jsp" rel="nofollow" rel="noreferrer"class="btn"><span>Hi,<%
+
+
+      <a style="position:absolute; left:80px" href="main.jsp" rel="nofollow" rel="noreferrer"class="btn"><span>Hi,&nbsp;<%
 	sql= "SELECT * FROM `working`.`user` where email='"+email+"' LIMIT 15";
 	System.out.println(sql);
 	//取得结果
@@ -333,34 +333,34 @@ a {
       	Following
       </span></a>
       <a style="position:absolute; left:800px" href="personalInfo.jsp" rel="nofollow" rel="noreferrer"class="btn"><span>Profile</span></a>
-      <a style="position:absolute; left:1000px" value="Sign out" onclick="location.href='logout.jsp'" rel="nofollow" rel="noreferrer"class="btn"><span>Sign out</span></a>     
-       
-   			      
+      <a style="position:absolute; left:1000px" value="Sign out" onclick="location.href='logout.jsp'" rel="nofollow" rel="noreferrer"class="btn"><span>Sign out</span></a>
+
+
     </div>
-    
+
     </div>
-  
+
     </section>
     <div style="position:absolute;left:1000px;top:100px">
 		<form action="search.jsp" method="post">
-    	<input type="text" name="searchName" maxlength="20" style="width:120"/> 
-      <input type="submit" value="Find friends"/>    	
-    </form> 
+    	<input type="text" name="searchName" maxlength="20" style="width:120"/>
+      <input type="submit" value="Find friends"/>
+    </form>
 	  </div>
-	  <div style="height:5">	
+	  <div style="height:5">
 	  </div>
-    <%response.setIntHeader("Refresh", 30);%> 
-    
+    <%response.setIntHeader("Refresh", 30);%>
+
     <section class="blur-container blur-8 justify-content-center align-items-center" style="height:80px">
     	<div style="position:reletive;left:300" class="blur-box">
     	 <div align="center">
-		
+
 	 <TEXTAREA type="text" id="statement" class="input_detail" rows=2 cols=50 placeholder="Current state"></TEXTAREA>
 	 <input style="height: 20; width:50;" type="button" value="发布" onclick="submitStatement()"/>
 	     </div>
 	    </div>
-    </section>    		  
-	
+    </section>
+
 	<%
 	sql= "SELECT a.email as email, username, statusnum, time, content "
 		+				"FROM `working`.`user` as a, `working`.`status` as b "
@@ -375,10 +375,10 @@ a {
 	rs = stmt.executeQuery(sql);
 	while (rs.next()){
 	%>
-	
-	<div align="center">		
-	<hr width="1000"/>	
-	<table bgcolor="">	
+
+	<div align="center">
+	<hr width="1000"/>
+	<table bgcolor="">
 	  <tr height="">
 	  	<td  width="500">
 	      <a style="display:block;width:160px ;color:#FFFFFF;background:url(background2.jpg) no-repeat fixed ;
@@ -401,7 +401,7 @@ a {
 	      </div>
        </td>
      </tr>
-     	
+
 	<%
 	String sql2="SELECT a.email as email, a.username as username, replynum, time, reply, c.email as email2, c.username as username2 "
 		+				"FROM `working`.`user` as a, `working`.`reply` as b, `working`.`user` as c "
@@ -414,11 +414,11 @@ a {
 	ResultSet rs2 = stmt2.executeQuery(sql2);
 	while (rs2.next()){
 	%>
-	
-	<td class="comment" width="50"><font size="3" color="white">		
-		 <a href="view.jsp?email=<%out.print(rs2.getString("email"));%>"><%out.print(rs2.getString("username"));%></a>&nbsp;replies&nbsp;<a href="view.jsp?email=<%out.print(rs2.getString("email2"));%>"><%out.print(rs2.getString("username2"));%></a>
-    </font><font size="5" color="white">:&nbsp;<%out.print(rs2.getString("reply"));%></font>	
-		   
+
+	<td class="comment" width="50"><font size="3" color="white">
+		 <a style="color:white" href="view.jsp?email=<%out.print(rs2.getString("email"));%>"><%out.print(rs2.getString("username"));%></a>&nbsp;replies&nbsp;<a style="color:white" href="view.jsp?email=<%out.print(rs2.getString("email2"));%>"><%out.print(rs2.getString("username2"));%></a>
+    </font><font size="4" color="white">:&nbsp;<%out.print(rs2.getString("reply"));%></font>
+
 	</td>
 	<td  class="comment" width="150"><font size="3" color="white"><%out.print(rs2.getString("time"));%></font>
 	</td>

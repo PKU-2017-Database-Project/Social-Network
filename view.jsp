@@ -60,7 +60,7 @@
 		body{
 			word-wrap:break-word; word-break:break-all;
 			text-decoration:none;
-			
+
 		}
 
 			section {
@@ -310,7 +310,7 @@ a {
 	</SCRIPT>
 </head>
 
-<body style="background: url(background2.jpg);background-attachment:fixed;background-size:cover; background-position: center;">	
+<body style="background: url(background2.jpg);background-attachment:fixed;background-size:cover; background-position: center;">
 		<section class="blur-container blur-5 justify-content-center align-items-center" style="height:130px">
   <div class="blur-box">
     <div class="container-fluid d-flex justify-content-around align-items-center">
@@ -386,7 +386,7 @@ a {
 	    <td  width="500">
 	    	<a style="display:block;width:160px ;color:#FFFFFF;background:url(background2.jpg) no-repeat fixed ;
 	    		text-align:center;text-decoration:none;padding:4px;font-weight:bold;"
-	    		 href="view.jsp?email=<%out.print(targetEmail);%>"><%out.print(targetName);%></a>
+	    		 href="view.jsp?email=<%out.print(targetEmail);%>">User:&nbsp;<%out.print(targetName);%></a>
 	    </td>
 	  </tr>
 	<tr height="100">
@@ -420,10 +420,10 @@ a {
 	<tr height="">
 
 	<td class="comment" width="500"><font size="3" color="white">
-    <a style="color:white" href="view.jsp?email=<%out.print(rs2.getString("email"));%>"><%out.print(rs2.getString("username"));%></a>Replies:<a style="color:white;"href="view.jsp?email=<%out.print(rs2.getString("email2"));%>"><%out.print(rs2.getString("username2"));%></a>
+    <a style="color:white" href="view.jsp?email=<%out.print(rs2.getString("email"));%>"><%out.print(rs2.getString("username"));%></a>&nbsp;Replies&nbsp;<a style="color:white;"href="view.jsp?email=<%out.print(rs2.getString("email2"));%>"><%out.print(rs2.getString("username2"));%>:&nbsp;</a>
     </font><font size="4" color="white"><%out.print(rs2.getString("reply"));%></font>
 	</td>
-	<td  class="comment" width="110"><font size="3" color="white"><%out.print(rs2.getString("time"));%></font>
+	<td  class="comment" width="150"><font size="3" color="white"><%out.print(rs2.getString("time"));%></font>
 	</td>
 	<td  class="comment" width="60"><a style="color:white"href="javascript:reply('<%out.print(rs.getString("statusnum"));%>','<%out.print(rs2.getString("replynum"));%>')">Reply</a></td>
 	</tr>
