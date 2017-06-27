@@ -316,7 +316,7 @@ a {
     <div class="container-fluid d-flex justify-content-around align-items-center">
 
 
-      <a style="position:absolute; left:80px" href="main.jsp" rel="nofollow" rel="noreferrer"class="btn"><span>Hi,<%
+      <a style="position:absolute; left:80px" href="main.jsp" rel="nofollow" rel="noreferrer"class="btn"><span>Hi,&nbsp;<%
 	sql= "SELECT * FROM `working`.`user` where email='"+email+"' LIMIT 15";
 	System.out.println(sql);
 	//取得结果
@@ -392,7 +392,7 @@ a {
 	<tr height="100">
 	<td width="500"><font size="5" color="white"><%out.print(rs.getString("content"));%></font>
 	</td>
-	<td width="110"><font size="3" color="white"><%out.print(rs.getString("time"));%></font>
+	<td width="150"><font size="3" color="white"><%out.print(rs.getString("time"));%></font>
 	</td>
 	<td width="60"><a style="color:white;text-decoration:none;font-weight:bold;" href="javascript:reply('<%out.print(rs.getString("statusnum"));%>', '0')">Reply</a></td>
 	</tr>
@@ -420,12 +420,12 @@ a {
 	<tr height="">
 
 	<td class="comment" width="500"><font size="3" color="white">
-    <a style="color:white" href="view.jsp?email=<%out.print(rs2.getString("email"));%>"><%out.print(rs2.getString("username"));%></a>&nbsp;Replies&nbsp;<a style="color:white;"href="view.jsp?email=<%out.print(rs2.getString("email2"));%>"><%out.print(rs2.getString("username2"));%>:&nbsp;</a>
+    <a style="color:white" href="view.jsp?email=<%out.print(rs2.getString("email"));%>"><%out.print(rs2.getString("username"));%></a>&nbsp;replies&nbsp;<a style="color:white;"href="view.jsp?email=<%out.print(rs2.getString("email2"));%>"><%out.print(rs2.getString("username2"));%>:&nbsp;</a>
     </font><font size="4" color="white"><%out.print(rs2.getString("reply"));%></font>
 	</td>
 	<td  class="comment" width="150"><font size="3" color="white"><%out.print(rs2.getString("time"));%></font>
 	</td>
-	<td  class="comment" width="60"><a style="color:white"href="javascript:reply('<%out.print(rs.getString("statusnum"));%>','<%out.print(rs2.getString("replynum"));%>')">Reply</a></td>
+	<td  class="comment" width="60"><a href="javascript:reply('<%out.print(rs.getString("statusnum"));%>','<%out.print(rs2.getString("replynum"));%>')">Reply</a></td>
 	</tr>
     <tr height="10">
 	  <td  width="650">
