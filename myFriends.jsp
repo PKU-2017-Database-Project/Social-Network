@@ -285,7 +285,8 @@ a {
 
 	</div>
 
-	<a style="position:relative center;><span>Following Friends</span></a>
+
+	<h3 style="text-align: center">2-Step Friends</h3>
 
 
 
@@ -312,7 +313,7 @@ a {
 	%>
 <hr/>
 
-<a style="position:relative center;><span>2-Step Friends</span></a>
+<h3 style="text-align: center">2-Step Friends</h3>
 
 <%
 	HashSet<String> frd2 = new HashSet<String>();
