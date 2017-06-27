@@ -61,7 +61,7 @@
 			word-wrap:break-word; word-break:break-all;
 			text-decoration:none;
 		}
-		
+
 			section {
   height: 100vh;
   display: -webkit-box;
@@ -160,8 +160,8 @@ a {
 
 .blur-container.blur-5 {
   --bg: url(background2.jpg);
-  background-image: var(--bg); 
-  
+  background-image: var(--bg);
+
 }
 .blur-container.blur-5::after {
   background-size: cover;
@@ -173,12 +173,12 @@ a {
   background-image: var(--bg);
 }
 .blur-container.blur-5 .blur-box {
-  
+
   width: 100%;
   height: 100px;
   overflow: hidden;
-  
-  
+
+
 }
 .blur-container.blur-5 .blur-box .btn {
   color: #fff;
@@ -252,8 +252,8 @@ a {
     -ms-flex-pack: center !important;
     justify-content: center !important;
 }
-		
-	
+
+
 		.comment{
 			border-style: dashed;
 			border-width: 1px 0px 0px 0px;
@@ -313,8 +313,8 @@ a {
 		<section class="blur-container blur-5 justify-content-center align-items-center" style="height:130px">
   <div class="blur-box">
     <div class="container-fluid d-flex justify-content-around align-items-center">
-    	
-    	   		
+
+
       <a style="position:absolute; left:80px" href="main.jsp" rel="nofollow" rel="noreferrer"class="btn"><span>Hi,<%
 	sql= "SELECT * FROM `working`.`user` where email='"+email+"' LIMIT 15";
 	System.out.println(sql);
@@ -327,27 +327,27 @@ a {
       	Following
       </span></a>
       <a style="position:absolute; left:800px" href="personalInfo.jsp" rel="nofollow" rel="noreferrer"class="btn"><span>Profile</span></a>
-      <a style="position:absolute; left:1000px" value="Sign out" onclick="location.href='logout.jsp'" rel="nofollow" rel="noreferrer"class="btn"><span>Sign out</span></a>     
-       
-   			      
+      <a style="position:absolute; left:1000px" value="Sign out" onclick="location.href='logout.jsp'" rel="nofollow" rel="noreferrer"class="btn"><span>Sign out</span></a>
+
+
     </div>
-    
+
   </div>
-  
+
 </section>
 
   <div style="position:absolute;left:1000px;top:100px">
 		<form action="search.jsp" method="post">
-    	<input type="text" name="searchName" maxlength="20" style="width:120"/> 
-      <input type="submit" value="Find friends"/>    	
-    </form> 
+    	<input type="text" name="searchName" maxlength="20" style="width:120"/>
+      <input type="submit" value="Find friends"/>
+    </form>
 	</div>
-	<div style="height:5">	
+	<div style="height:5">
 	</div>
-	
+
 <section class="blur-container blur-8 justify-content-center align-items-center" style="height:80px">
 	<div style="position:absolute;top:6px;left:750px;height:63px;min-width:350px;" class="blur-box">
-   
+
 	<%
 	sql= "SELECT * FROM `working`.`user` as a, `working`.`userdetail` as b where a.email='"+targetEmail+"' and a.email=b.email";
 	System.out.println(sql);
@@ -357,13 +357,13 @@ a {
 	rs = stmt.executeQuery(sql);
 	if (rs.next()){
 		targetName=rs.getString("username");
-		out.print(targetName+"</br>");
-		out.print("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Gender: "+rs.getString("sex")+"</br>");
-		out.print("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Date of birth: "+rs.getString("year")+"/");
+		out.print("User: "+targetName+"</br>");
+		out.print("Gender: "+rs.getString("sex")+"</br>");
+		out.print("Date of birth: "+rs.getString("year")+"/");
 		out.print(rs.getString("month")+"/");
         	out.print(rs.getString("day"));
-	}%>		
-  </div> 
+	}%>
+  </div>
 </section>
 
 	<%
@@ -377,7 +377,7 @@ a {
 	rs = stmt.executeQuery(sql);
 	while (rs.next()){
 	%>
-	
+
 	<div align="center">
 	<hr width="1000"/>
 	<table bgcolor="">
@@ -415,7 +415,7 @@ a {
 	ResultSet rs2 = stmt2.executeQuery(sql2);
 	while (rs2.next()){
 	%>
-	
+
 	<tr height="">
 
 	<td class="comment" width="500"><font size="3" color="black">

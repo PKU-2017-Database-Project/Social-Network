@@ -152,8 +152,8 @@ a {
 
 .blur-container.blur-5 {
   --bg: url(background2.jpg);
-  background-image: var(--bg); 
-  
+  background-image: var(--bg);
+
 }
 .blur-container.blur-5::after {
   background-size: cover;
@@ -165,12 +165,12 @@ a {
   background-image: var(--bg);
 }
 .blur-container.blur-5 .blur-box {
-  
+
   width: 100%;
   height: 100px;
   overflow: hidden;
-  
-  
+
+
 }
 .blur-container.blur-5 .blur-box .btn {
   color: #fff;
@@ -244,7 +244,7 @@ a {
     -ms-flex-pack: center !important;
     justify-content: center !important;
 }
-		
+
 	}
 	</style>
 	<SCRIPT type="text/javascript">
@@ -281,8 +281,8 @@ a {
 	<section class="blur-container blur-5 justify-content-center align-items-center" style="height:130px">
   <div class="blur-box">
     <div class="container-fluid d-flex justify-content-around align-items-center">
-    	
-    	   		
+
+
       <a style="position:absolute; left:80px" href="main.jsp" rel="nofollow" rel="noreferrer"class="btn"><span>Hi,<%
 	sql= "SELECT * FROM `working`.`user` where email='"+email+"' LIMIT 15";
 	System.out.println(sql);
@@ -295,25 +295,25 @@ a {
       	Following
       </span></a>
       <a style="position:absolute; left:800px" href="personalInfo.jsp" rel="nofollow" rel="noreferrer"class="btn"><span>Profile</span></a>
-      <a style="position:absolute; left:1000px" value="Sign out" onclick="location.href='logout.jsp'" rel="nofollow" rel="noreferrer"class="btn"><span>Sign out</span></a>     
-       
-   			      
+      <a style="position:absolute; left:1000px" value="Sign out" onclick="location.href='logout.jsp'" rel="nofollow" rel="noreferrer"class="btn"><span>Sign out</span></a>
+
+
     </div>
-    
+
   </div>
-  
+
 </section>
 <div style="position:absolute;left:1000px;top:100px">
 		<form action="search.jsp" method="post">
-    	<input type="text" name="searchName" maxlength="20" style="width:120"/> 
-      <input type="submit" value="Find friends"/>    	
-    </form> 
+    	<input type="text" name="searchName" maxlength="20" style="width:120"/>
+      <input type="submit" value="Find friends"/>
+    </form>
 	</div>
 	<div style="height:5">
-		
-	</div>	
-	
-	
+
+	</div>
+
+
 	<%
 	if (searchName!=null){
 
@@ -332,13 +332,13 @@ a {
 		%>
 		<section style="height:200px" class="blur-container blur-8 justify-content-center align-items-center">
   <div style="position: reletive center" class="blur-box">
-    
+
 		<a style="display:block;width:160px ;color:#FFFFFF;background-color:rgb(150,170,180);text-algn:center;text-decoration:none;padding:4px;;font-weight:bold;" href="view.jsp?email=<%out.print(rs.getString("email"));%>">
-			<%out.print(rs.getString("username"));%></a></br>&nbsp &nbsp &nbsp Gender: <%out.print(rs.getString("sex"));%></br></br>&nbsp&nbsp&nbsp&nbsp&nbsp;Date of birth: <%out.print(rs.getString("year"));%>/<%out.print(rs.getString("month"));%>/<%out.print(rs.getString("day"));%>
+			<%out.print(rs.getString("username"));%></a></br>Gender: <%out.print(rs.getString("sex"));%></br></br>Date of birth: <%out.print(rs.getString("year"));%>/<%out.print(rs.getString("month"));%>/<%out.print(rs.getString("day"));%>
 
 		<span id="<%out.print(rs.getString("email"));%>"><input type="button" value="Follow" onclick="addFriend('<%out.print(rs.getString("email"));%>')" /></span>
 
-		
+
 		</div>
 	</section>
 		<%
