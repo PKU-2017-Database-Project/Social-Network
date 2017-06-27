@@ -1,2 +1,40 @@
 \begin{lstlisting}
+HashSet<String> frd1 = new HashSet<String>();	// one-step friends
+HashSet<String> frd2 = new HashSet<String>();	// two-step friends
+
+/* select friends of own */
+sql = "SELECT * FROM
+		`working`.`friends` as a,
+		`working`.`user` as b,
+		`working`.`userdetail` as c
+	WHERE
+		a.email2 = c.email
+		and a.email2 = b.email
+		and a.email = '" + email + "'"; // email variable stores its own email String
+
+rs = stmt.executeQuery(sql);	// get result set
+while (rs.next()) {
+	frd1.add(rs.getString("email2"));	// store 1-step friends in frd1
+}
+
+for (String frd : frd1) {	// for each 1-step friend
+	/* get the friends of 1-step friends */
+	sql = "SELECT * FROM
+		`working`.`friends` as a,
+		`working`.`user` as b,
+		`working`.`userdetail` as c
+		WHERE
+			a.email2 = c.email
+			and a.email2 = b.email
+			and a.email = '" + frd + "'";
+
+	rs = stmt.executeQuery(sql);
+	while (rs.next()) {
+		frd2.add(rs.getString("email2"));	// store 2-step friends in frd2
+	}
+}
+
+frd2.removeAll(frd1);	// remove 1-step friends in frd2
+frd2.remove(email);	// remove itself in frd2
+...
 \end{lstlisting}

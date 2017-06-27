@@ -67,7 +67,9 @@
 	}
 %>
 
+
 <body style="background:url(background2.jpg);background-attachment:fixed;background-size:cover; background-position: center;">
+<div style="position:absolute;left:43%;top:30%">
 <%
 if (ok==1){
 	out.println("<p>You've successfully signed up!</p>");
@@ -81,4 +83,5 @@ if (ok==1){
 	response.setHeader("REFRESH",content);
 }
 %>
+</div>
 </body>

@@ -5,7 +5,10 @@
 /* Server Side */
 String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 String url = "https://www.google.com/recaptcha/api/siteverify";
+
+/* Key for reCaptcha validation */
 String secret = "6LdDNiMUAAAAACVxX9eQOV4ITsc9YApSRpb80Lle";
+
 boolean check = true;
 if (!(gRecaptchaResponse == null || "".equals(gRecaptchaResponse))) {
 	try{
