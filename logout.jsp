@@ -18,5 +18,5 @@
 	String content=5+";URL="+"login.jsp";
 	response.setHeader("REFRESH",content);
 %>
-%</div>
+</div>
 </body>

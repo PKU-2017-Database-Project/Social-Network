@@ -288,7 +288,7 @@ a {
 
 
 	<%
-	HashSet<String> frd1 = new HashSet<>();
+	HashSet<String> frd1 = new HashSet<String>();
 	sql= "SELECT * FROM `working`.`friends` as a, `working`.`user` as b, `working`.`userdetail` as c where a.email2 = c.email and a.email2 = b.email and a.email = '" + email + "'";
 	//取得结果
 	System.out.println(sql);
@@ -311,7 +311,7 @@ a {
 <hr/>
 
 <%
-	HashSet<String> frd2 = new HashSet<>();
+	HashSet<String> frd2 = new HashSet<String>();
 	for(String frd : frd1){
 		sql= "SELECT * FROM `working`.`friends` as a, `working`.`user` as b, `working`.`userdetail` as c where a.email2 = c.email and a.email2 = b.email and a.email = '" + frd + "'";
 		System.out.println(sql);
