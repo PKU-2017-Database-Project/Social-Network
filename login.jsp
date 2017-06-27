@@ -33,7 +33,7 @@ body,h1{margin:0;padding:0;border:0;overflow:hidden}
 a{text-decoration:none;color:#959595}
 a:hover{color:#626262}
 .fontWeight{font-weight:700}
-.header{width:100%;height:12%;position:relative;margin:0 auto;z-index:2;overflow:hidden;background:url(background.jpg) no-repeat center top}
+.header{width:100%;height:12%;position:relative;margin:0 auto;z-index:2;overflow:hidden;background:url(background.jpg) no-repeat center ;background-attachment:fixed;background-size:cover; }
 .headerLogo{top:7%;left:4%;position:absolute}
 .headerIntro{height:5%;width:20%;display:block;background-position:0 -64px;top:35%;left:5%;position:absolute;font-size:30px}
 .headerNav{top:21px;right:100px;text-align:right;color:#cfd0d0;position:absolute}

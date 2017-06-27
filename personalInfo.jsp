@@ -248,7 +248,7 @@ a {
 	</style>
 </head>
 
-<body style="background:url(background2.jpg);overflow-x:hidden">
+<body style="background:url(background2.jpg);background-attachment:fixed;background-size:cover; background-position: center;overflow-x:hidden">
 	<section class="blur-container blur-5 justify-content-center align-items-center" style="height:130px">
   <div class="blur-box">
     <div class="container-fluid d-flex justify-content-around align-items-center">
