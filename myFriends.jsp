@@ -288,11 +288,13 @@ a {
 
 
 	<%
+	HashSet<String> frd1 = new HashSet<>();
 	sql= "SELECT * FROM `working`.`friends` as a, `working`.`user` as b, `working`.`userdetail` as c where a.email2 = c.email and a.email2 = b.email and a.email = '" + email + "'";
 	//取得结果
 	System.out.println(sql);
 	rs = stmt.executeQuery(sql);
 	while (rs.next()){
+		frd1.add(rs.getString("email2"));
 	%>
 	<section style="height:200px" class="blur-container blur-8 justify-content-center align-items-center">
   <div style="position: reletive center" class="blur-box">
@@ -306,7 +308,39 @@ a {
 	<%
 	}
 	%>
+<hr/>
 
+<%
+	HashSet<String> frd2 = new HashSet<>();
+	for(String frd : frd1){
+		sql= "SELECT * FROM `working`.`friends` as a, `working`.`user` as b, `working`.`userdetail` as c where a.email2 = c.email and a.email2 = b.email and a.email = '" + frd + "'";
+		System.out.println(sql);
+		rs = stmt.executeQuery(sql);
+		while(rs.next()){
+			frd2.add(rs.getString("email2"));
+		}
+	}
+	frd2.removeAll(frd1);
+	frd2.remove(email);
+
+	for(String frd : frd2){
+		sql= "SELECT * FROM `working`.`user` as b, `working`.`userdetail` as c where c.email = b.email and b.email = '" + frd + "'";
+		System.out.println(sql);
+		rs = stmt.executeQuery(sql);
+		while(rs.next()){
+		%>
+		<section style="height:200px" class="blur-container blur-8 justify-content-center align-items-center">
+	  <div style="position: reletive center" class="blur-box">
+
+
+	<a style="display:block;width:160px ;color:#FFFFFF;background-color:rgb(150,170,180);text-algn:center;text-decoration:none;padding:4px;;font-weight:bold;" href="view.jsp?email=<%out.print(frd);%>"><%out.print(rs.getString("username"));%></a></br>Gender:&nbsp; <%out.print(rs.getString("sex"));%></br></br>Date of birth:&nbsp; <%out.print(rs.getString("year"));%>/<%out.print(rs.getString("month"));%>/<%out.print(rs.getString("day"));%>
+
+
+	</div>
+	</section>
+		<%
+	}}
+		%>
 </body>
 </html>
 <%
