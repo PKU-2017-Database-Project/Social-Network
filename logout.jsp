@@ -4,7 +4,7 @@
 <%@page import="java.sql.*"%>
 <%@page import="com.mysql.jdbc.ResultSetMetaData"%>
 
-<body style="background:url(background2.jpg)">
+<body style="background:url(background2.jpg);background-attachment:fixed;background-size:cover; background-position: center;">
 <div style="position:absolute;left:43%;top:30%">
 <%
 	int ok=0;
