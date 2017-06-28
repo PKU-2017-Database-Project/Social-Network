@@ -9,7 +9,6 @@ sql = "SELECT * FROM
 		a.email2 = c.email
 		and a.email2 = b.email
 		and a.email = '" + email + "'"; // email variable stores its own email String
-
 rs = stmt.executeQuery(sql);	// get result set
 while (rs.next()) {
 	frd1.add(rs.getString("email2"));	// store 1-step friends in frd1
@@ -28,7 +27,6 @@ for (String frd : frd1) {	// for each 1-step friend
 			a.email2 = c.email
 			and a.email2 = b.email
 			and a.email = '" + frd + "'";
-
 	rs = stmt.executeQuery(sql);
 
 	/* NOTE that a 2-step friend may have multiple intermediaries */
@@ -41,5 +39,10 @@ for (String frd : frd1) {	// for each 1-step friend
 }
 frd2.keySet().removeAll(frd1);	// exclude 1-step friends
 frd2.keySet().remove(email);	// exclude itself
-...	// output 2-step friends
+/*
+ * Here you get emails of 2-step friends and all
+ * their intermediaries, so just select username
+ * from database with the emails and output
+ */
+...
 \end{lstlisting}
