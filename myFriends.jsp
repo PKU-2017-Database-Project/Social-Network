@@ -324,9 +324,8 @@ a {
 		rs = stmt.executeQuery(sql);
 		while(rs.next()){
 			String frd2eml = rs.getString("email2");
-			if(!frd2.containsKey(frd2eml)){
+			if(!frd2.containsKey(frd2eml))
 				frd2.put(frd2eml, new HashSet<String>());
-			}
 			frd2.get(frd2eml).add(frd);
 		}
 	}
@@ -343,10 +342,10 @@ a {
 	  <div style="position: reletive center" class="blur-box">
 
 
-	<a style="display:block;width:160px ;color:#FFFFFF;background-color:rgb(150,170,180);text-algn:center;text-decoration:none;padding:4px;;font-weight:bold;" href="view.jsp?email=<%out.print(frd);%>"><%out.print(rs.getString("username"));%></a>&nbsp;From:<%
+	<a style="display:block;width:160px ;color:#FFFFFF;background-color:rgb(150,170,180);text-algn:center;text-decoration:none;padding:4px;;font-weight:bold;" href="view.jsp?email=<%out.print(frd);%>"><%out.print(rs.getString("username"));%>&nbsp;from<%
 		for(String inter:frd2.get(frd)){
 			out.print(" "+inter);
-		}%>
+		}%></a>
 	</br>Gender:&nbsp; <%out.print(rs.getString("sex"));%></br></br>Date of birth:&nbsp; <%out.print(rs.getString("year"));%>/<%out.print(rs.getString("month"));%>/<%out.print(rs.getString("day"));%>
 
 

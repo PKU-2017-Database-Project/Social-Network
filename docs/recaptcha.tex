@@ -1,15 +1,10 @@
 \begin{lstlisting}
-/* Client Side */
-<div class="g-recaptcha" data-sitekey="6LdDNiMUAAAAAHDPfsdqqPKAPFEy5Xi3EoGwJIXi"></div>
-
-/* Server Side */
+<div class="g-recaptcha" data-sitekey="..."></div>	// Client side
+/* Server side, send post request to Google to verify */
 String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 String url = "https://www.google.com/recaptcha/api/siteverify";
-
-/* Key for reCaptcha validation */
-String secret = "6LdDNiMUAAAAACVxX9eQOV4ITsc9YApSRpb80Lle";
-
-boolean check = true;
+String secret = "...";	// key for reCaptcha validation
+boolean check = true;	// whether reCaptcha passed
 if (!(gRecaptchaResponse == null || "".equals(gRecaptchaResponse))) {
 	try{
 		URL obj = new URL(url);
@@ -18,19 +13,16 @@ if (!(gRecaptchaResponse == null || "".equals(gRecaptchaResponse))) {
 		con.setRequestMethod("POST");
 		con.setDoOutput(true);
 
-		String postParams
-			= "secret=" + secret + "&response=" + gRecaptchaResponse;
-
+		String postParams =
+			"secret=" + secret + "&response=" + gRecaptchaResponse;
 		DataOutputStream wr =
 			new DataOutputStream(con.getOutputStream());
 		wr.writeBytes(postParams);
 		wr.flush();
 		wr.close();
 
-		BufferedReader in =
-			new BufferedReader(
-				new InputStreamReader(
-					con.getInputStream()));
+		BufferedReader in = new BufferedReader(
+			new InputStreamReader(con.getInputStream()));
 		String inputLine;
 		StringBuffer rsps = new StringBuffer();
 		while ((inputLine = in.readLine()) != null) {
@@ -38,9 +30,8 @@ if (!(gRecaptchaResponse == null || "".equals(gRecaptchaResponse))) {
 		}
 		in.close();
 
-		JsonReader jsonReader =
-			Json.createReader(
-				new StringReader(rsps.toString()));
+		JsonReader jsonReader = Json.createReader(
+			new StringReader(rsps.toString()));
 		JsonObject jsonObject = jsonReader.readObject();
 		jsonReader.close();
 		check=jsonObject.getBoolean("success");
@@ -49,7 +40,7 @@ if (!(gRecaptchaResponse == null || "".equals(gRecaptchaResponse))) {
 	}
 }
 ...
-if (check) {
+if (check) {	// only if reCaptcha verification passed
 	...
 }
 \end{lstlisting}

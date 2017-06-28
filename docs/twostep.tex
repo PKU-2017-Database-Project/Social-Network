@@ -1,7 +1,5 @@
 \begin{lstlisting}
 HashSet<String> frd1 = new HashSet<String>();	// one-step friends
-HashSet<String> frd2 = new HashSet<String>();	// two-step friends
-
 /* select friends of own */
 sql = "SELECT * FROM
 		`working`.`friends` as a,
@@ -16,7 +14,10 @@ rs = stmt.executeQuery(sql);	// get result set
 while (rs.next()) {
 	frd1.add(rs.getString("email2"));	// store 1-step friends in frd1
 }
+...	// output 1-step friends
 
+HashMap<String, HashSet<String>> frd2 =
+	new HashMap<String, HashSet<String>>(); // two-step friends
 for (String frd : frd1) {	// for each 1-step friend
 	/* get the friends of 1-step friends */
 	sql = "SELECT * FROM
@@ -29,12 +30,16 @@ for (String frd : frd1) {	// for each 1-step friend
 			and a.email = '" + frd + "'";
 
 	rs = stmt.executeQuery(sql);
+
+	/* NOTE that a 2-step friend may have multiple intermediaries */
 	while (rs.next()) {
-		frd2.add(rs.getString("email2"));	// store 2-step friends in frd2
+		String frd2eml = rs.getString("email2");	// 2-step friend email
+		if(!frd2.containsKey(frd2eml))	// if new, create a new entry
+			frd2.put(frd2eml, new HashSet<String>());
+		frd2.get(frd2eml).add(frd);	// add intermediary to record set
 	}
 }
-
-frd2.removeAll(frd1);	// remove 1-step friends in frd2
-frd2.remove(email);	// remove itself in frd2
-...
+frd2.keySet().removeAll(frd1);	// exclude 1-step friends
+frd2.keySet().remove(email);	// exclude itself
+...	// output 2-step friends
 \end{lstlisting}
