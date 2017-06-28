@@ -316,19 +316,24 @@ a {
 <h3 style="text-align: center; color: white">2-Step Friends</h3>
 
 <%
-	HashSet<String> frd2 = new HashSet<String>();
+	HashMap<String, HashSet<String>> frd2 =
+		new HashMap<String, HashSet<String>>();
 	for(String frd : frd1){
 		sql= "SELECT * FROM `working`.`friends` as a, `working`.`user` as b, `working`.`userdetail` as c where a.email2 = c.email and a.email2 = b.email and a.email = '" + frd + "'";
 		System.out.println(sql);
 		rs = stmt.executeQuery(sql);
 		while(rs.next()){
-			frd2.add(rs.getString("email2"));
+			String frd2eml = rs.getString("email2");
+			if(!frd2.containsKey(frd2eml)){
+				frd2.put(frd2eml, new HashSet<String>());
+			}
+			frd2.get(frd2eml).add(frd);
 		}
 	}
-	frd2.removeAll(frd1);
-	frd2.remove(email);
+	frd2.keySet().removeAll(frd1);
+	frd2.keySet().remove(email);
 
-	for(String frd : frd2){
+	for(String frd : frd2.keySet()){
 		sql= "SELECT * FROM `working`.`user` as b, `working`.`userdetail` as c where c.email = b.email and b.email = '" + frd + "'";
 		System.out.println(sql);
 		rs = stmt.executeQuery(sql);
@@ -338,7 +343,11 @@ a {
 	  <div style="position: reletive center" class="blur-box">
 
 
-	<a style="display:block;width:160px ;color:#FFFFFF;background-color:rgb(150,170,180);text-algn:center;text-decoration:none;padding:4px;;font-weight:bold;" href="view.jsp?email=<%out.print(frd);%>"><%out.print(rs.getString("username"));%></a></br>Gender:&nbsp; <%out.print(rs.getString("sex"));%></br></br>Date of birth:&nbsp; <%out.print(rs.getString("year"));%>/<%out.print(rs.getString("month"));%>/<%out.print(rs.getString("day"));%>
+	<a style="display:block;width:160px ;color:#FFFFFF;background-color:rgb(150,170,180);text-algn:center;text-decoration:none;padding:4px;;font-weight:bold;" href="view.jsp?email=<%out.print(frd);%>"><%out.print(rs.getString("username"));%></a>&nbsp;From:<%
+		for(String inter:frd2.get(frd)){
+			out.print(" "+inter);
+		}%>
+	</br>Gender:&nbsp; <%out.print(rs.getString("sex"));%></br></br>Date of birth:&nbsp; <%out.print(rs.getString("year"));%>/<%out.print(rs.getString("month"));%>/<%out.print(rs.getString("day"));%>
 
 
 	</div>
