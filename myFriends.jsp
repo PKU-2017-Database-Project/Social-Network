@@ -342,9 +342,13 @@ a {
 	  <div style="position: reletive center" class="blur-box">
 
 
-	<a style="display:block;width:160px ;color:#FFFFFF;background-color:rgb(150,170,180);text-algn:center;text-decoration:none;padding:4px;;font-weight:bold;" href="view.jsp?email=<%out.print(frd);%>"><%out.print(rs.getString("username"));%>&nbsp;from<%
+	<a style="display:block;width:160px ;color:#FFFFFF;background-color:rgb(150,170,180);text-algn:center;text-decoration:none;padding:4px;;font-weight:bold;" href="view.jsp?email=<%out.print(frd);%>"><%out.print(rs.getString("username"));%></a><a style="display:block; color:#FFFFFF;background-color:rgb(130,130,130);text-algn:center;text-decoration:none;padding:4px;">From<%
 		for(String inter:frd2.get(frd)){
-			out.print(" "+inter);
+			sql= "SELECT * FROM `working`.`user` as b where b.email = '" + inter + "'";
+			System.out.println(sql);
+			ResultSet rs2 = stmt.executeQuery(sql);
+			while(rs2.next())
+				out.print(" "+rs2.getString("username"));
 		}%></a>
 	</br>Gender:&nbsp; <%out.print(rs.getString("sex"));%></br></br>Date of birth:&nbsp; <%out.print(rs.getString("year"));%>/<%out.print(rs.getString("month"));%>/<%out.print(rs.getString("day"));%>
 
