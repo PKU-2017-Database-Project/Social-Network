@@ -346,9 +346,12 @@ a {
 		for(String inter:frd2.get(frd)){
 			sql= "SELECT * FROM `working`.`user` as b where b.email = '" + inter + "'";
 			System.out.println(sql);
-			ResultSet rs2 = stmt.executeQuery(sql);
+			Statement stmt2 = conn.createStatement();
+			ResultSet rs2 = stmt2.executeQuery(sql);
 			while(rs2.next())
 				out.print(" "+rs2.getString("username"));
+			stmt2.close();
+			rs2.close();
 		}%></a>
 	</br>Gender:&nbsp; <%out.print(rs.getString("sex"));%></br></br>Date of birth:&nbsp; <%out.print(rs.getString("year"));%>/<%out.print(rs.getString("month"));%>/<%out.print(rs.getString("day"));%>
 
