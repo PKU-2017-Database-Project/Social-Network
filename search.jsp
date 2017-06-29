@@ -317,6 +317,31 @@ a {
 	<%
 	if (searchName!=null){
 
+		HashSet<String> frd1 = new HashSet<String>();
+		sql= "SELECT * FROM `working`.`friends` as a, `working`.`user` as b, `working`.`userdetail` as c where a.email2 = c.email and a.email2 = b.email and a.email = '" + email + "'";
+		//取得结果
+		System.out.println(sql);
+		rs = stmt.executeQuery(sql);
+		while (rs.next()){
+			frd1.add(rs.getString("email2"));
+		}
+
+		HashMap<String, HashSet<String>> frd2 =
+			new HashMap<String, HashSet<String>>();
+		for(String frd : frd1){
+			sql= "SELECT * FROM `working`.`friends` as a, `working`.`user` as b, `working`.`userdetail` as c where a.email2 = c.email and a.email2 = b.email and a.email = '" + frd + "'";
+			System.out.println(sql);
+			rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				String frd2eml = rs.getString("email2");
+				if(!frd2.containsKey(frd2eml))
+					frd2.put(frd2eml, new HashSet<String>());
+				frd2.get(frd2eml).add(frd);
+			}
+		}
+		frd2.keySet().removeAll(frd1);
+		frd2.keySet().remove(email);
+
 		sql= "SELECT * FROM `working`.`user` as a, `working`.`userdetail` as b "
 			+"where username like '%"+searchName+"%' "
             +"and a.email = b.email "
@@ -334,7 +359,22 @@ a {
   <div style="position: reletive center" class="blur-box">
 
 		<a style="display:block;width:160px ;color:#FFFFFF;background-color:rgb(150,170,180);text-algn:center;text-decoration:none;padding:4px;;font-weight:bold;" href="view.jsp?email=<%out.print(rs.getString("email"));%>">
-			<%out.print(rs.getString("username"));%></a></br>Gender: <%out.print(rs.getString("sex"));%></br></br>Date of birth: <%out.print(rs.getString("year"));%>/<%out.print(rs.getString("month"));%>/<%out.print(rs.getString("day"));%>
+			<%out.print(rs.getString("username"));%></a></br>
+
+			<%if(frd2.containsKey(rs.getString("email"))){%>
+			<a style="display:block; color:#FFFFFF;background-color:rgb(130,130,130);text-algn:center;text-decoration:none;padding:4px;">From<%
+			for(String inter:frd2.get(rs.getString("email"))){
+				sql= "SELECT * FROM `working`.`user` as b where b.email = '" + inter + "'";
+				System.out.println(sql);
+				Statement stmt2 = conn.createStatement();
+				ResultSet rs2 = stmt2.executeQuery(sql);
+				while(rs2.next())
+					out.print(" "+rs2.getString("username"));
+				stmt2.close();
+				rs2.close();
+			}%></a><%}%>
+
+			<br/>Gender: <%out.print(rs.getString("sex"));%></br></br>Date of birth: <%out.print(rs.getString("year"));%>/<%out.print(rs.getString("month"));%>/<%out.print(rs.getString("day"));%>
 
 		<span id="<%out.print(rs.getString("email"));%>"><input type="button" value="Follow" onclick="addFriend('<%out.print(rs.getString("email"));%>')" /></span>
 
