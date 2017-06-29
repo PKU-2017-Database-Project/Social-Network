@@ -359,7 +359,7 @@ a {
   <div style="position: reletive center" class="blur-box">
 
 		<a style="display:block;width:160px ;color:#FFFFFF;background-color:rgb(150,170,180);text-algn:center;text-decoration:none;padding:4px;;font-weight:bold;" href="view.jsp?email=<%out.print(rs.getString("email"));%>">
-			<%out.print(rs.getString("username"));%></a></br>
+			<%out.print(rs.getString("username"));%></a>
 
 			<%if(frd2.containsKey(rs.getString("email"))){%>
 			<a style="display:block; color:#FFFFFF;background-color:rgb(130,130,130);text-algn:center;text-decoration:none;padding:4px;">From<%
